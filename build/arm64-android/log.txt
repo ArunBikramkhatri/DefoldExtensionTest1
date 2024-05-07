@@ -1,0 +1,40 @@
+java -jar /opt/local/bin/manifestmergetool.jar --platform android --main /tmp/job14758606272829850962/upload/AndroidManifest.xml  --lib /tmp/job14758606272829850962/upload/myextension/manifests/android/AndroidManifest.xml  --out /tmp/job14758606272829850962/build/AndroidManifest.xml
+
+aapt2 compile /tmp/job14758606272829850962/upload/packages/com.defold.android/res/drawable-xxhdpi/icon.png -o /tmp/job14758606272829850962/build/compiledResources/com.defold.android
+
+aapt2 compile /tmp/job14758606272829850962/upload/packages/com.defold.android/res/drawable-mdpi/icon.png -o /tmp/job14758606272829850962/build/compiledResources/com.defold.android
+
+aapt2 compile /tmp/job14758606272829850962/upload/packages/com.defold.android/res/drawable-xxxhdpi/icon.png -o /tmp/job14758606272829850962/build/compiledResources/com.defold.android
+
+aapt2 compile /tmp/job14758606272829850962/upload/packages/com.defold.android/res/drawable-xhdpi/icon.png -o /tmp/job14758606272829850962/build/compiledResources/com.defold.android
+
+aapt2 compile /tmp/job14758606272829850962/upload/packages/com.defold.android/res/drawable-hdpi/icon.png -o /tmp/job14758606272829850962/build/compiledResources/com.defold.android
+
+aapt2 compile /tmp/job14758606272829850962/upload/packages/com.defold.android/res/drawable-ldpi/icon.png -o /tmp/job14758606272829850962/build/compiledResources/com.defold.android
+
+aapt2 compile /tmp/job14758606272829850962/upload/packages/myextension/raw/test.txt -o /tmp/job14758606272829850962/build/compiledResources/packages
+
+aapt2 compile /tmp/job14758606272829850962/upload/myextension/res/android/res/raw/test.txt -o /tmp/job14758606272829850962/build/compiledResources/android
+
+aapt2 link  --proto-format --non-final-ids --auto-add-overlay --manifest /tmp/job14758606272829850962/build/AndroidManifest.xml -I /opt/platformsdk/android/android-sdk-linux/platforms/android-33/android.jar --java /tmp/job14758606272829850962/build/out_java -o /tmp/job14758606272829850962/build/compiledresources.apk --emit-ids /tmp/job14758606272829850962/build/resource_ids.txt -R @/tmp/job14758606272829850962/build/compiledresources.txt
+
+javac -source 1.8 -target 1.8 -J-Xms2048m -J-Xmx2048m -classpath /opt/platformsdk/android/android-sdk-linux/platforms/android-33/android.jar:/tmp/job14758606272829850962/build/tmp0rjava/classes -d /tmp/job14758606272829850962/build/tmp0rjava/classes @/tmp/job14758606272829850962/build/tmp0rjava/sources.txt
+warning: [options] bootstrap class path not set in conjunction with -source 8
+1 warning
+
+jar cf /tmp/job14758606272829850962/build/tmp0rjava/R.jar -C /tmp/job14758606272829850962/build/tmp0rjava/classes .
+
+d8 --main-dex-list /tmp/job14758606272829850962/build/main_dex_list.txt --output /tmp/job14758606272829850962/build --release --lib /opt/platformsdk/android/android-sdk-linux/platforms/android-33/android.jar /var/extender/sdk/37a4a8548850a7243055bb820e45580cfdae5f32/defoldsdk//ext/share/java/android-support-multidex.jar /var/extender/sdk/37a4a8548850a7243055bb820e45580cfdae5f32/defoldsdk//ext/share/java/androidx-multidex.jar /var/extender/sdk/37a4a8548850a7243055bb820e45580cfdae5f32/defoldsdk//share/java/glfw_android.jar /var/extender/sdk/37a4a8548850a7243055bb820e45580cfdae5f32/defoldsdk//share/java/gamesys_android.jar /var/extender/sdk/37a4a8548850a7243055bb820e45580cfdae5f32/defoldsdk//share/java/sound_android.jar /tmp/job14758606272829850962/upload/myextension/lib/android/admob.jar /tmp/job14758606272829850962/upload/myextension/lib/android/inAppUpdate.jar /tmp/job14758606272829850962/build/tmp0rjava/R.jar 
+Warning in /tmp/job14758606272829850962/build/main_dex_list.txt:
+  Unsupported usage of main-dex list. The usage of main-dex-list content for the compilation of non-DEX inputs is deprecated. See issue https://issuetracker.google.com/181858113 for context.
+Warning in /tmp/job14758606272829850962/upload/myextension/lib/android/admob.jar:com/example/admob/Admob$3.class:
+  Type `com.google.android.gms.ads.AdListener` was not found, it is required for default or static interface methods desugaring of `Lcom/example/admob/Admob$3;onAdClicked()V`
+
+/opt/platformsdk/android/android-ndk-r25b/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android21-clang++ -c -O2 -g -gdwarf-2 -fpic -ffunction-sections -fstack-protector -march=armv8-a -fomit-frame-pointer -fno-strict-aliasing -funwind-tables -isysroot=/opt/platformsdk/android/android-ndk-r25b/toolchains/llvm/prebuilt/linux-x86_64/sysroot -DANDROID -Wa,--noexecstack -DDLIB_LOG_DOMAIN="MYEXTENSION" -DDDF_EXPOSE_DESCRIPTORS -DDM_PLATFORM_ANDROID -D__aarch64__ -DDM_DEBUG  -fno-exceptions -fvisibility=hidden  -Ibuild/myextension/ -Iupload/  -I/var/extender/sdk/37a4a8548850a7243055bb820e45580cfdae5f32/defoldsdk//include -I/var/extender/sdk/37a4a8548850a7243055bb820e45580cfdae5f32/defoldsdk//sdk/include -I/var/extender/sdk/37a4a8548850a7243055bb820e45580cfdae5f32/defoldsdk//ext/include  -I/opt/platformsdk/android/android-ndk-r25b/sources/android/native_app_glue -I/opt/platformsdk/android/android-ndk-r25b/sources/android/cpufeatures  upload/myextension/src/myextension.cpp -obuild/myextension.cpp_1.o
+
+llvm-ar rcs /tmp/job14758606272829850962/build/libmyExtension_2.a build/myextension.cpp_1.o 
+
+/opt/platformsdk/android/android-ndk-r25b/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android21-clang++ -c -O2 -g -gdwarf-2 -fpic -ffunction-sections -fstack-protector -march=armv8-a -fomit-frame-pointer -fno-strict-aliasing -funwind-tables -isysroot=/opt/platformsdk/android/android-ndk-r25b/toolchains/llvm/prebuilt/linux-x86_64/sysroot -DANDROID -Wa,--noexecstack -DDLIB_LOG_DOMAIN="UNKNOWN" -DDDF_EXPOSE_DESCRIPTORS -DDM_PLATFORM_ANDROID -D__aarch64__ -DDM_DEBUG  -fno-exceptions -fvisibility=hidden   -I/var/extender/sdk/37a4a8548850a7243055bb820e45580cfdae5f32/defoldsdk//include -I/var/extender/sdk/37a4a8548850a7243055bb820e45580cfdae5f32/defoldsdk//sdk/include -I/var/extender/sdk/37a4a8548850a7243055bb820e45580cfdae5f32/defoldsdk//ext/include  -I/opt/platformsdk/android/android-ndk-r25b/sources/android/native_app_glue -I/opt/platformsdk/android/android-ndk-r25b/sources/android/cpufeatures  build/main.cpp -obuild/main_tmp3.o
+
+/opt/platformsdk/android/android-ndk-r25b/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android21-clang++ -fuse-ld=/opt/platformsdk/android/android-ndk-r25b/toolchains/llvm/prebuilt/linux-x86_64/bin/ld.lld -O2 -g -isysroot=/opt/platformsdk/android/android-ndk-r25b/toolchains/llvm/prebuilt/linux-x86_64/sysroot -static-libstdc++ build/main_tmp3.o  -o build/libdmengine.so -Wl,-soname=libdmengine.so -DDLIB_LOG_DOMAIN="UNKNOWN" -DDDF_EXPOSE_DESCRIPTORS -DDM_PLATFORM_ANDROID -D__aarch64__ -DDM_DEBUG  -Wl,--build-id=uuid  -Wl,--no-undefined -Wl,-z,noexecstack -landroid -fpic -z text -L/tmp/job14758606272829850962/build -L/tmp/job14758606272829850962/upload/myextension/lib/android  -L/var/extender/sdk/37a4a8548850a7243055bb820e45580cfdae5f32/defoldsdk//lib/arm64-android -L/var/extender/sdk/37a4a8548850a7243055bb820e45580cfdae5f32/defoldsdk//ext/lib/arm64-android  -Wl,-Bstatic -Wl,--start-group -lc++_static  -lmyExtension_2  -lengine -lengine_service -lmbedtls -lzip -lwebviewext -lprofile -lremotery -lprofilerext -lfacebookext -liapext -lpushext -liacext -lrecord_null -lgameobject -lddf -lresource -lgamesys -lgraphics -lgraphics_transcoder_basisu -lbasis_transcoder -lphysics -lBulletDynamics -lBulletCollision -lplatform -lLinearMath -lBox2D -lrender -lscript -lluajit-5.1 -lextension -lhid -linput -lparticle -lrig -ldlib -ldmglfw -lgui -lcrashext -lsound -ltremolo -lliveupdate -lunwind  -Wl,--end-group -Wl,-Bdynamic  -lEGL -lGLESv1_CM -lGLESv2 -lOpenSLES -lm -llog -lc  -Wl,--no-undefined -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -shared
+

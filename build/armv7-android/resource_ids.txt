@@ -1,0 +1,2 @@
+com.example.todo:raw/test = 0x7f020000
+com.example.todo:drawable/icon = 0x7f010000

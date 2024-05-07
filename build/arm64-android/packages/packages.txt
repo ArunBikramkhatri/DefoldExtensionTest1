@@ -1,0 +1,3 @@
+com.defold.android/res/
+packages/res/
+android/res/
